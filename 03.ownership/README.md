@@ -21,12 +21,12 @@ println!("{}", x); // コンパイルエラーになる
 
 ## 借用（borrow）
 
-関数が引数を通じて変数の中身を移動（move）させることを借用（borrow）と呼ぶ
+関数に対して変数の所有権を移動（move）してしまうと、後続の処理で変数を利用できなくなる
 
 ```rust
 fn main() {
     let x = String::from("Hello")
-    // 変数xから所有権を借用
+    // 変数xをlengthに移動
     let len = length(x);
     
     // lengthに所有権を移動しているので、コンパイルエラー
@@ -39,9 +39,9 @@ fn length(s: String) -> usize {
 }
 ```
 
-## 参照（reference）
+所有権を移動（move）させずに、参照（reference）を渡すことを「借用（borrow）」と呼称する。
 
-上記のように関数に変数を渡すだけで移動をしてしまうと面倒なので、参照（reference）を使って値を参照することができる。
+借用（borrow）をすることで、関数に引数を渡した後も変数に所有権が残る。
 
 ```rust
 fn main() {
