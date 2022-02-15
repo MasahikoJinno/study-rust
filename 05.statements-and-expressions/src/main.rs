@@ -49,6 +49,14 @@ fn main() {
         print!("{} ", i);
     }
     println!("");
+
+    // 関数を用いてベクターの中身を加工する
+    let mut v = vec![1, 2, 3, 4, 5];
+    update_vec(&mut v);
+    for i in v {
+        print!("{} ", i);
+    }
+    println!("");
 }
 
 fn add(x: i32, y: i32) -> i32 {
@@ -79,6 +87,7 @@ fn sum(v: &Vec<i32>) -> i32 {
     sum
 }
 
+// 受け取った数のベクターを作成して返す関数
 fn return_vec(max: i32) -> Vec<i32> {
     println!("called return_vec");
     let mut v = Vec::new();
@@ -86,4 +95,12 @@ fn return_vec(max: i32) -> Vec<i32> {
         v.push(i);
     }
     v
+}
+
+// 受け取ったベクターを加工する関数
+fn update_vec(v: &mut Vec<i32>) {
+    println!("called update_vec");
+    for i in v {
+        *i = *i * 10;
+    }
 }
